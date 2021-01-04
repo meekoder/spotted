@@ -1,0 +1,128 @@
+body {
+}
+
+&::-webkit-scrollbar: {
+  display: 'none';
+}
+/* LANDING PAGE */
+.link {
+  color: #FFF;
+}
+
+.link:hover {
+   color: #DCDCDC;
+}
+
+.landingPhoto {
+  opacity: 0.4;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 5;
+}
+
+.overlay {
+  width: 100vw;
+  background-color: black;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+}
+
+.button {
+  font-family: "impact";
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.title {
+  font-size: 100px !important;
+  font-style: italic;
+  color: white !important;
+  letter-spacing: 10px;
+  font-family: "impact";
+  margin: 0 !important;
+  user-select: none;
+}
+
+.caption {
+  color: #DCDCDC;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+/* REGISTRATION PAGE */
+
+.box {
+  width: 50%;
+}
+
+.boxContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.accheading {
+  font-size: 50px;
+  font-style: italic;
+  font-family: "impact";
+  margin: 0;
+}
+
+.whitebtn {
+  color: #000;
+}
+
+.whitebtn:hover {
+   color: #DCDCDC;
+}
+
+/* HOME */
+
+.posts {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post {
+  margin-top: 30px;
+  width: 40%;
+}
+
+@media (max-width: 600px) {
+  .post {
+    width: 100%;
+  }
+}
+
+/* SETTINGS */
+
+.settings {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PROFILE */
+
+.profileInfo {
+  position: fixed;
+  width: 100%;
+}
