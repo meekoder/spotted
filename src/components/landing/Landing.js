@@ -14,20 +14,21 @@ import Marketplace from '../marketplace/Marketplace';
 import Liked from '../likes/Liked';
 import Profile from '../profile/Profile';
 import Settings from '../settings/Settings';
+import Verify from './Verify';
 
 
-const Verify = () => {
-  const [n, setN] = useState(0)
-  let history = useHistory()
-  return ( <><input type="number" maxLength="4" value={n} onChange={e=>setN(e.target.value)}/>
-          <button onClick={() => {
-            fetch('/api/verify?pin='+n, {method:"POST"})
-              .then(() => history.push('/home'))
-              .catch(console.log)
-          }}>check</button></>
-           )
+// const Verify = () => {
+//   const [n, setN] = useState(0)
+//   let history = useHistory()
+//   return ( <><input type="number" maxLength="4" value={n} onChange={e=>setN(e.target.value)}/>
+//     <button onClick={() => {
+//       fetch('/api/verify?pin='+n, {method:"POST"})
+//         .then(() => history.push('/home'))
+//         .catch(console.log)
+//     }}>check</button></>
+//   )
 
-}
+// }
 
 const Landing = () => {
   return (

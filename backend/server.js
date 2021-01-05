@@ -1,4 +1,3 @@
-require('dotenv').config({ path: './twilio.env'  })
 const express = require('express');
 const parser = require('body-parser');
 const db = require('./database/queries');
