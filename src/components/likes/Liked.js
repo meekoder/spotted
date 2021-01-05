@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Nav from '../Nav';
+import NoLikes from './NoLikes';
 import Likes from './Likes';
 import Context from '../Context';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -56,10 +57,12 @@ const Liked = () => {
   ScrollTop.propTypes = {
     children: PropTypes.element.isRequired,
   };
+
   return (
     <div>
       <Nav />
       <Toolbar id="back-to-top-anchor" className={classes.top} />
+      {!likes.length && <NoLikes />}
       <Likes likes={likes} />
       <React.Fragment>
         <CssBaseline />

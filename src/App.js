@@ -16,6 +16,7 @@ const theme = createMuiTheme({
       dark: '#932020',
       contrastText: '#000',
     },
+    spacing: [0, 4, 8, 16, 32, 64],
   },
 })
 

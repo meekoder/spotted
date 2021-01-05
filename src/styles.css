@@ -134,3 +134,12 @@ body::-webkit-scrollbar {
   position: fixed;
   width: 100%;
 }
+
+.noLikes {
+  font-size: 50px;
+  font-family: "impact";
+  font-style: italic;
+  letter-spacing: 2px;
+  user-select: none;
+  margin: 0;
+}

@@ -382,7 +382,7 @@ const Nav = () => {
               <MenuItem onClick={() => {handleCreateClose(); handleOpenCreateMeet();}}>
                 <DriveEtaIcon />
                 <div className={classes.createMenu}>
-                  <Typography variant="body1">Meet</Typography>
+                  <Typography variant="body1">Event</Typography>
                   <Typography variant="caption">Share information on a local car meet.</Typography>
                 </div>
               </MenuItem>
