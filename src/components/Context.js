@@ -12,6 +12,7 @@ export const Provider = ({ children }) => {
     firstname: '',
     lastname: '',
     username: '',
+    phone: '',
     bio: '',
     email: '',
     password: ''

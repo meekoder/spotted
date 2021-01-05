@@ -149,7 +149,7 @@ const Listing = ({ listing }) => {
             <Typography variant="body2" component="p">
               <div className={classes.icon}>
                 <PhoneIcon />
-                {listing.contactinfo}
+                {listing.phone}
               </div>
             </Typography>
           </CardContent>

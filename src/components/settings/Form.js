@@ -35,7 +35,6 @@ const Form = () => {
     if (reason === 'clickaway') {
       return;
     }
-
     setSuccessOpen(false);
     setFailOpen(false);
   };
@@ -121,6 +120,19 @@ const Form = () => {
                   autoComplete="email"
                   onChange={handleSettingsChange('email')}
                   value={settings.email}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="phone number"
+                  label="Phone Number"
+                  name="phone"
+                  autoComplete="tel"
+                  onChange={handleSettingsChange('phone')}
+                  value={settings.phone}
                 />
               </Grid>
               <Grid item xs={12}>

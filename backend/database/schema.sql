@@ -9,8 +9,11 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   avatar VARCHAR(70),
   bio VARCHAR(255),
+  phone VARCHAR(70),
   firstName VARCHAR(70),
   lastName VARCHAR(70),
+  city VARCHAR(70),
+  state VARCHAR(70),
   username VARCHAR(70) UNIQUE,
   email VARCHAR(70),
   password VARCHAR(70)
@@ -78,5 +81,13 @@ CREATE TABLE listings (
   contactinfo VARCHAR(70),
   transmission VARCHAR(70),
   sold BOOLEAN,
+  user_id INT REFERENCES users(id)
+);
+
+DROP TABLE IF EXISTS pins;
+
+CREATE TABLE pins (
+  id SERIAL PRIMARY KEY,
+  pin INT NOT NULL,
   user_id INT REFERENCES users(id)
 );

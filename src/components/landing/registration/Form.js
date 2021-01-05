@@ -35,6 +35,7 @@ const Form = () => {
     firstname: '',
     lastname: '',
     username: '',
+    phone: '',
     email: '',
     password: ''
   });
@@ -52,7 +53,6 @@ const Form = () => {
   };
 
   const handleSignUp = (e) => {
-    console.log(formValues)
     e.preventDefault();
     if (confirmedPassword == formValues.password) {
       fetch('/api/registration', {
@@ -85,13 +85,13 @@ const Form = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="fname"
                   name="firstName"
                   variant="outlined"
                   required
                   fullWidth
                   id="firstName"
                   label="First Name"
+                  autoComplete="fname"
                   onChange={handleFormChange('firstname')}
                   autoFocus
                 />
@@ -118,6 +118,18 @@ const Form = () => {
                   name="username"
                   autoComplete="uname"
                   onChange={handleFormChange('username')}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="phone number"
+                  label="Phone Number"
+                  name="phone"
+                  autoComplete="tel"
+                  onChange={handleFormChange('phone')}
                 />
               </Grid>
               <Grid item xs={12}>

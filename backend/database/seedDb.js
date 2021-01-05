@@ -64,16 +64,19 @@ const generateUsers = async () => {
       id: count,
       avatar: getAvatarUrl(),
       bio: faker.lorem.sentence(),
+      phone: faker.phone.phoneNumber(),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
+      city: faker.address.city(),
+      state: faker.address.stateAbbr(),
       email: faker.internet.email(),
       password: faker.internet.password(),
     };
     user.username = `${user.firstName}${user.lastName}`;
     users.push(user.id);
     await db.query(
-      "INSERT INTO users (id, avatar, bio, firstName, lastName, username, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
-      [ user.id, user.avatar, user.bio, user.firstName, user.lastName, user.username, user.email, user.password ]);
+      "INSERT INTO users (id, avatar, bio, phone, firstName, lastName, city, state, username, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)",
+      [ user.id, user.avatar, user.bio, user.phone, user.firstName, user.lastName, user.city, user.state, user.username, user.email, user.password ]);
     count += 1;
   }
 };

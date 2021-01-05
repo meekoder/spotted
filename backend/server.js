@@ -42,7 +42,8 @@ app.get('/api/logout', (req, res) => {
 })
 
 app.post('/login', (req, res, next) => {
-  const {username,password} = req.query
+  const { username, password } = req.query;
+
   db.getLogin(username)
     .then(us => {
       if (us.password !== password) {
@@ -186,11 +187,12 @@ app.post('/api/verify', (req, res, next) => {
     res.sendStatus(400);
     return;
   } 
-  db.getLogin(username).then(us => {
-    req.query.username = username;
-    req.query.password = us.password;
-    next();
-  })
+  db.getLogin(username)
+    .then((us) => {
+      req.query.username = username;
+      req.query.password = us.password;
+      next();
+    })
 }, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
   res.sendStatus(200);
 }

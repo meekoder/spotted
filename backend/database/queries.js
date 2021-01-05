@@ -8,7 +8,7 @@ const getProfile = (username) => {
 };
 
 const getSettings = (username) => {
-  return db.query(`SELECT firstName, lastName, username, email, bio, password FROM users WHERE username = '${username}'`)
+  return db.query(`SELECT firstName, lastName, username, phone, email, bio, password FROM users WHERE username = '${username}'`)
     .then((r) => r.rows[0]);
 };
 
@@ -98,7 +98,7 @@ const getMeets = (req, res) => {
 
 const getListings = (req, res) => {
   db.query(`
-    SELECT l.*, u.avatar, u.firstname, u.lastname 
+    SELECT l.*, u.avatar, u.firstname, u.lastname, u.phone 
     FROM listings l 
     INNER JOIN users u ON l.user_id = u.id
     ORDER BY l.listeddate DESC;
@@ -150,14 +150,14 @@ const createComment = (id, comment) => {
 
 const createUser = (form) => {
   return db.query(
-    "INSERT INTO users (firstName, lastName, username, email, password) VALUES ($1, $2, $3, $4, $5)",
-    [form.firstname, form.lastname, form.username, form.email, form.password]);
+    "INSERT INTO users (firstName, lastName, username, phone, email, password) VALUES ($1, $2, $3, $4, $5, $6)",
+    [form.firstname, form.lastname, form.username, form.phone, form.email, form.password]);
 };
 
 const updateUser = (id, user) => {
   return db.query(
-    "UPDATE users SET firstName = ($1), lastName = ($2), username = ($3), email = ($4), password = ($5), bio = ($6) WHERE id = ($7)",
-    [ user.firstname, user.lastname, user.username, user.email, user.password, user.bio, id ]);
+    "UPDATE users SET firstName = ($1), lastName = ($2), username = ($3), email = ($4), password = ($5), bio = ($6), phone = ($7) WHERE id = ($8)",
+    [ user.firstname, user.lastname, user.username, user.email, user.password, user.bio, user.phone, id ]);
 };
 
 const deletePost = (req, res) => {

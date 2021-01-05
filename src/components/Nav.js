@@ -175,7 +175,6 @@ const Nav = () => {
     city: '',
     state: '',
     description: '',
-    contactinfo: '',
     sold: false,
   });
 
@@ -918,18 +917,9 @@ const Nav = () => {
                       direction="column"
                       justify="flex-start"
                     >
-                      <Grid item xs={4}>
-                        <TextField
-                          label="Phone Number"
-                          id="outlined-margin-normal"
-                          classname={classes.textField}
-                          margin="normal"
-                          variant="outlined"
-                          onChange={handleListingChange('contactinfo')}
-                        />
-                      </Grid>
                       <Grid item>
                         <TextField
+                          style={{ marginTop: 15 }}
                           label="Description"
                           className={classes.textbox}
                           id="outlined-multiline-static"
