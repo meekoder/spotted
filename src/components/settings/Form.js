@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import MuiAlert from '@material-ui/lab/Alert';
+import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -67,7 +68,9 @@ const Form = () => {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <h6 className="accheading">ACCOUNT SETTINGS</h6>
+          <Typography variant="body1" align="center">
+            <h6 className="accsettings">ACCOUNT SETTINGS</h6>
+          </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>

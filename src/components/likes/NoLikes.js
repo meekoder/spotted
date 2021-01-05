@@ -19,7 +19,7 @@ const NoLikes = () => {
     <div className={classes.start}>
       <Paper elevation={3} className={classes.paper}>
           <Typography variant="body1" align="center">
-            <h6 className="noLikes">NO LIKED POSTS!</h6>
+            <h6 className="accheading">NO LIKED POSTS!</h6>
           </Typography>
       </Paper>
     </div>

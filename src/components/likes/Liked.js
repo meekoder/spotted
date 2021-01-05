@@ -58,11 +58,13 @@ const Liked = () => {
     children: PropTypes.element.isRequired,
   };
 
+  // if no likes
+      // {!likes.length ? <NoLikes /> : null}
+
   return (
     <div>
       <Nav />
       <Toolbar id="back-to-top-anchor" className={classes.top} />
-      {!likes.length && <NoLikes />}
       <Likes likes={likes} />
       <React.Fragment>
         <CssBaseline />

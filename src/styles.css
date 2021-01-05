@@ -76,9 +76,21 @@ body::-webkit-scrollbar {
 
 .accheading {
   font-size: 50px;
-  font-style: italic;
   font-family: "impact";
+  font-style: italic;
+  letter-spacing: 2px;
+  user-select: none;
   margin: 0;
+}
+
+.accsettings {
+  font-size: 45px;
+  font-family: "impact";
+  font-style: italic;
+  letter-spacing: 2px;
+  user-select: none;
+  margin-bottom: 10px;
+  margin-top: 0;
 }
 
 .whitebtn {
@@ -135,11 +147,3 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 
-.noLikes {
-  font-size: 50px;
-  font-family: "impact";
-  font-style: italic;
-  letter-spacing: 2px;
-  user-select: none;
-  margin: 0;
-}
