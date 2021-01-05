@@ -164,18 +164,20 @@ app.post('/api/registration', (req, res, next) => {
   res.sendStatus(200);
 });
 
-const smsService = require('./send_sms.js')
-const pins = {}
+// SEND SMS
+const smsService = require('./send_sms.js');
+const pins = {};
+
 function textPin(username) {
-  if (!username) return console.error('no username given')
+  if (!username) return console.error('no username given');
   const pin = Math.floor(Math.random() * (9999 - 1000) + 1000);
-  pins[username] = pin
-  const phone = '+16505050827'
-  smsService.sendVerificationText(pin, phone)
+  const phone = '+16505050827';
+  pins[username] = pin;
+  smsService.sendVerificationText(pin, phone);
 }
 
 app.post('/api/verify', (req, res, next) => {
-  const username = req.cookies['spotted_verify_user']
+  const username = req.cookies['spotted_verify_user'];
   if (!username) {
     res.sendStatus(400);
     return;

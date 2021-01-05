@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, Fragment }from 'react';
+import React, { useRef, useContext, Fragment }from 'react';
 import S3FileUpload from 'react-s3';
 import config from './config';
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,13 +21,11 @@ const useStyles = makeStyles((theme) => ({
 const PhotoUpload = () =>{
   const classes = useStyles();
   const { selectedFile, setSelectedFile } = useContext(Context);
-  // const [selectedFile, setSelectedFile] = useState([]);
   const photosInput = useRef(null);
-  
+
   const handleUploadClick = (e) => {
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
-        console.log(data.location);
         setSelectedFile([data.location]);
       })
       .catch((err) => {
@@ -36,9 +34,9 @@ const PhotoUpload = () =>{
   };
 
   const imageResetHandler = () => {
-    console.log(photosInput)
-    photosInput.current.files = null;
-    // setSelectedFile([]);
+    // image wont reappear if the same image that was removed was reuploaded
+    // photosInput.current.files = null;
+    setSelectedFile([]);
   };
 
   const uploadedState = () => {
