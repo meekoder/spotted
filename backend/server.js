@@ -12,7 +12,6 @@ pp.use(new LocalStrategy(
     // hash p
     db.getLogin(u)
       .then(us => {
-        console.log(us)
         if (us.password !== p) {
           return done(null, false, {});
         }
@@ -24,7 +23,7 @@ pp.use(new LocalStrategy(
 
 pp.serializeUser((user, done) => done(null, user.id));
 pp.deserializeUser((id, done) => 
-    db.getUser(id).then(us => done(null, us))
+  db.getUser(id).then(us => done(null, us))
 );
 
 const app = express();
@@ -38,29 +37,29 @@ app.use(pp.initialize());
 app.use(pp.session());
 
 app.get('/api/logout', (req, res) => {
-  req.logout() 
-  res.ok()
+  req.logout(); 
+  res.ok();
 })
 
 app.post('/login', (req, res, next) => {
-    const {username,password} = req.query
-    db.getLogin(username)
-      .then(us => {
-        if (us.password !== password) {
-          res.sendStatus(400)
-          return 
-        }
-        if (true) {
-          textPin(username)
-          res.cookie('spotted_verify_user', username)
-          res.sendStatus(301)
-          return
-        }
-        next()
-      })
-  }, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
-    res.sendStatus(200);
-  });
+  const {username,password} = req.query
+  db.getLogin(username)
+    .then(us => {
+      if (us.password !== password) {
+        res.sendStatus(400);
+        return;
+      }
+      if (true) {
+        textPin(username);
+        res.cookie('spotted_verify_user', username);
+        res.sendStatus(301);
+        return;
+      }
+      next();
+    })
+}, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
+  res.sendStatus(200);
+});
 
 app.get('/z', (req, res) => {
   res.send(JSON.stringify({page:"home", user: req.user}));
@@ -68,7 +67,7 @@ app.get('/z', (req, res) => {
 
 app.get('/api/profil', (req, res) => {
   if (!req.user) {
-    res.sendStatus(401)
+    res.sendStatus(401);
     return;
   }
   db.getProfile(req.user.username)
@@ -161,7 +160,7 @@ app.post('/api/registration', (req, res, next) => {
     })
     .catch((err) => console.log(err));
 }, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
-      textPin(req.user.username)
+  textPin(req.user.username)
   res.sendStatus(200);
 });
 
@@ -179,21 +178,21 @@ app.post('/api/verify', (req, res, next) => {
   const username = req.cookies['spotted_verify_user']
   if (!username) {
     res.sendStatus(400);
-    return
+    return;
   }
   if (pins[username] != req.query.pin) {
     res.sendStatus(400);
-    return
+    return;
   } 
   db.getLogin(username).then(us => {
-    req.query.username = username
-    req.query.password = us.password
-    next()
+    req.query.username = username;
+    req.query.password = us.password;
+    next();
   })
 }, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
   res.sendStatus(200);
-    }
-)
+}
+);
 
 app.get('/api/:id/comments', db.getComments);
 app.get('/api/meets', db.getMeets);

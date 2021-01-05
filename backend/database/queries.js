@@ -149,7 +149,6 @@ const createComment = (id, comment) => {
 };
 
 const createUser = (form) => {
-  console.log(form)
   return db.query(
     "INSERT INTO users (firstName, lastName, username, email, password) VALUES ($1, $2, $3, $4, $5)",
     [form.firstname, form.lastname, form.username, form.email, form.password]);
@@ -158,7 +157,7 @@ const createUser = (form) => {
 const updateUser = (id, user) => {
   return db.query(
     "UPDATE users SET firstName = ($1), lastName = ($2), username = ($3), email = ($4), password = ($5), bio = ($6) WHERE id = ($7)",
-    [ user.firstname, user.lastname, user.username, user.email, user.password, user.bio, id ])
+    [ user.firstname, user.lastname, user.username, user.email, user.password, user.bio, id ]);
 };
 
 const deletePost = (req, res) => {

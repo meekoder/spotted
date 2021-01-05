@@ -8,7 +8,8 @@ function sendVerificationText(pin, to) {
     client.messages
         .create({
             body: `Your verification code from Spotted is: ${pin}`,
-            from: '+17047410832'
+            from: '+17047410832',
+            to
             // to: '+16505050827'
         })
         .then(message => console.log(message.sid));
