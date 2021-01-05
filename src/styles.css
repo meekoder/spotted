@@ -11,21 +11,6 @@ body::-webkit-scrollbar {
    color: #DCDCDC;
 }
 
-.landingPhoto {
-  opacity: 0.4;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: 5;
-}
-
-.overlay {
-  width: 100vw;
-  background-color: black;
-  overflow: hidden;
-  z-index: 2;
-}
-
 .header {
   display: flex;
   justify-content: center;
