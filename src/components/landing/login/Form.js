@@ -44,12 +44,11 @@ const Form = () => {
       },
     })
       .then(res => {
-        console.log(res)
         if (res.status == 301) {
-          history.push('/verify')
-          return
+          history.push('/verify');
+          return;
         }
-        history.push('/home')
+        history.push('/home');
       })
       .catch(res => console.error(res));
   };

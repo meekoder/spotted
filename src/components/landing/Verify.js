@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Verify = () => {
   const classes = useStyles();
-  const [inputValue, setInputValue] = useState(0);
+  const [inputValue, setInputValue] = useState();
   let history = useHistory();
 
   const handleSubmit = (e) => {
@@ -35,40 +35,42 @@ const Verify = () => {
   };
 
   return (
-    <Paper elevation={3}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <h6 className="accheading">LOG IN</h6>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="pin"
-              label="Verification Code"
-              name="pin"
-              autoFocus
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
-          </form>
-        </div>
-        <Box mt={5}>
-        </Box>
-      </Container>
-    </Paper>
+    <div className="boxContainer">
+      <Paper elevation={3}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <h6 className="accheading">2-STEP VERIFICATION</h6>
+            <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="pin"
+                label="Verification Code"
+                name="pin"
+                placeholder="Enter 4-Digit PIN"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </form>
+          </div>
+          <Box mt={5}>
+          </Box>
+        </Container>
+      </Paper>
+    </div>
   );
 };
 
