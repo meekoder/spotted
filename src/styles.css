@@ -1,9 +1,7 @@
-body {
+body::-webkit-scrollbar {
+    display: none;
 }
 
-&::-webkit-scrollbar: {
-  display: 'none';
-}
 /* LANDING PAGE */
 .link {
   color: #FFF;
@@ -109,6 +107,16 @@ body {
   .post {
     width: 100%;
   }
+}
+
+.navTitle {
+  font-size: 30px !important;
+  font-style: italic;
+  color: white !important;
+  letter-spacing: 2px;
+  font-family: "impact";
+  margin: 0 !important;
+  user-select: none;
 }
 
 /* SETTINGS */

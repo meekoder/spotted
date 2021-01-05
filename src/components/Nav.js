@@ -37,6 +37,13 @@ import Grid from '@material-ui/core/Grid';
 import Context from './Context';
 
 const useStyles = makeStyles((theme) => ({
+  logo: {
+    height: '30px',
+  },
+  image: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   link: {
     textDecoration: 'inherit',
   },
@@ -332,7 +339,12 @@ const Nav = () => {
           </Menu>
           <Typography variant="h6" className={classes.title}>
             <Link style={{ textDecoration: 'none'}} color="inherit" href="/home">
-              Spotted
+              <div className={classes.image}>
+                <img alt="spotted icon" className={classes.logo} src="spottedRB.png"/>
+                <div className="navTitle">
+                  SPOTTED
+                </div>
+              </div>
             </Link>
           </Typography>
           <div>

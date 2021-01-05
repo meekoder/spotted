@@ -1,3 +1,4 @@
+require('dotenv').config({ path: './twilio.env'  })
 const express = require('express');
 const parser = require('body-parser');
 const db = require('./database/queries');
@@ -42,9 +43,25 @@ app.get('/api/logout', (req, res) => {
   res.ok()
 })
 
-app.post('/login', pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
-  res.sendStatus(200);
-});
+app.post('/login', (req, res, next) => {
+    const {username,password} = req.query
+    db.getLogin(username)
+      .then(us => {
+        if (us.password !== password) {
+          res.sendStatus(400)
+          return 
+        }
+        if (true) {
+          textPin(username)
+          res.cookie('spotted_verify_user', username)
+          res.sendStatus(301)
+          return
+        }
+        next()
+      })
+  }, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
+    res.sendStatus(200);
+  });
 
 app.get('/z', (req, res) => {
   res.send(JSON.stringify({page:"home", user: req.user}));
@@ -145,9 +162,39 @@ app.post('/api/registration', (req, res, next) => {
     })
     .catch((err) => console.log(err));
 }, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
+      textPin(req.user.username)
   res.sendStatus(200);
 });
 
+const smsService = require('./send_sms.js')
+const pins = {}
+function textPin(username) {
+  if (!username) return console.error('no username given')
+  const pin = Math.floor(Math.random() * (9999 - 1000) + 1000);
+  pins[username] = pin
+  const phone = '+16505050827'
+  smsService.sendVerificationText(pin, phone)
+}
+
+app.post('/api/verify', (req, res, next) => {
+  const username = req.cookies['spotted_verify_user']
+  if (!username) {
+    res.sendStatus(400);
+    return
+  }
+  if (pins[username] != req.query.pin) {
+    res.sendStatus(400);
+    return
+  } 
+  db.getLogin(username).then(us => {
+    req.query.username = username
+    req.query.password = us.password
+    next()
+  })
+}, pp.authenticate('local', {failureRedirect:'/login'}), (req, res) => {
+  res.sendStatus(200);
+    }
+)
 
 app.get('/api/:id/comments', db.getComments);
 app.get('/api/meets', db.getMeets);
