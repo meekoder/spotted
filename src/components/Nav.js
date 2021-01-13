@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import AddIcon from '@material-ui/icons/Add';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
@@ -35,15 +34,10 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
 import Context from './Context';
+import MainMenu from './nav/MainMenu';
+import NavTitle from './nav/NavTitle';
 
 const useStyles = makeStyles((theme) => ({
-  logo: {
-    height: '30px',
-  },
-  image: {
-    display: 'flex',
-    alignItems: 'center',
-  },
   link: {
     textDecoration: 'inherit',
   },
@@ -85,9 +79,6 @@ const useStyles = makeStyles((theme) => ({
   dialogUsername: {
     marginLeft: 5,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   textbox: {
     minWidth: '100%',
   },
@@ -99,9 +90,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column',
-  },
-  title: {
-    flexGrow: 1,
   },
   formControl: {
     paddingTop: 8,
@@ -123,12 +111,10 @@ const Nav = () => {
   const [openCreateMeet, setOpenCreateMeet] = useState(false);
   const [openCreateListing, setOpenCreateListing] = useState(false);
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
-  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [createAnchorEl, setCreateAnchorEl] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { user, setPosts, posts, setUser, selectedFile, setSelectedFile } = useContext(Context);
   const profileOpen = Boolean(profileAnchorEl);
-  const menuOpen = Boolean(menuAnchorEl);
   const createOpen = Boolean(createAnchorEl);
   let history = useHistory(); 
 
@@ -220,14 +206,6 @@ const Nav = () => {
       .catch(() => history.push('/'));
   };
 
-  const handleMenu = (event) => {
-    setMenuAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setMenuAnchorEl(null);
-  };
-
   const handleCreateMenu = (event) => {
     setCreateAnchorEl(event.currentTarget);
   };
@@ -298,54 +276,8 @@ const Nav = () => {
     <div className={classes.root}>
       <AppBar position="static" color="primary">
         <Toolbar>
-          <IconButton 
-            edge="start" 
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={menuAnchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={menuOpen}
-            onClose={handleClose}
-          >
-            <Link style={{ textDecoration: 'none'}} color="inherit" href="/home">
-              <MenuItem onClick={handleClose}>Home</MenuItem>
-            </Link>
-            <Link style={{ textDecoration: 'none'}} color="inherit" href="/meets">
-              <MenuItem onClick={handleClose}>
-                Meets
-              </MenuItem>
-            </Link>
-            <Link style={{ textDecoration: 'none'}} color="inherit" href="/marketplace">
-              <MenuItem onClick={handleClose}>Marketplace</MenuItem>
-            </Link>
-          </Menu>
-          <Typography variant="h6" className={classes.title}>
-            <Link style={{ textDecoration: 'none'}} color="inherit" href="/home">
-              <div className={classes.image}>
-                <img alt="spotted icon" className={classes.logo} src="spottedRB.png"/>
-                <div className="navTitle">
-                  SPOTTED
-                </div>
-              </div>
-            </Link>
-          </Typography>
+          <MainMenu />
+          <NavTitle />
           <div>
             <IconButton
               aria-controls="menu-appbar"
