@@ -13,14 +13,22 @@ As a car enthusiast myself, I found it difficult to find local car meets.
 - Users are able to post their own photos, car meet locations, or put a vehicle up for sale
 - In Account Settings, the user's information can be updated
 
-## Available Scripts
+## Tech/Frameworks Used ##
+__Built with__
+- React
+- Node.js
+- PostgreSQL
+- Material UI
+- Express
 
-In the project directory, you can run:
+__Other technologies used__
+- Twilio API
+- Passport.js
+- Amazon IVS
+- Amazon S3
 
-### `npm start`
+## Run the Project Locally ##
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Clone the project locally
+2. Run ```npm start``` in the command line
+3. Navigate to [http://localhost:3000](http://localhost:3000) in your browser to view/use the application
