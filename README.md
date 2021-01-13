@@ -2,7 +2,7 @@
 This application was created to help connect car enthusiasts from around the world.
 As a car enthusiast myself, I found it difficult to find local car meets.
 
-## Usage
+## Preview
 
 ## Features
 
