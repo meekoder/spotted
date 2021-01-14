@@ -19,56 +19,9 @@ import CreateMeet from './nav/CreateMeet';
 import CreateListing from './nav/CreateListing';
 
 const useStyles = makeStyles((theme) => ({
-  link: {
-    textDecoration: 'inherit',
-  },
-  margin: {
-    marginTop: 15,
-  },
-  grid: {
-    flexGrow: 1,
-  },
-  times: {
-    display: 'flex',
-    marginTop: theme.spacing(2),
-    justifyContent: 'space-between',
-  },
-  inputLabel: {
-    marginTop: 7,
-  },
-  address: {
+  rightMenus: {
     display: 'flex',
     alignItems: 'center',
-  },
-  dialogTitle: {
-    textAlign: 'center'
-  },
-  dialogUser: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  dialog: {
-    paddingTop: 0,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  dateTime: {
-    justifyContent: 'flex-start',
-  },
-  dialogUsername: {
-    marginLeft: 5,
-  },
-  textbox: {
-    minWidth: '100%',
-  },
-  menuTitle: {
-    marginLeft: 10,
-  },
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
   },
 }));
 
@@ -85,9 +38,9 @@ const Nav = () => {
   useEffect(() => {
     async function getUser() {
       await fetch('/api/user')
-      .then((r) => r.json())
-      .then((u) => setUser(u))
-      .catch((err) => console.error(err));
+        .then((r) => r.json())
+        .then((u) => setUser(u))
+        .catch((err) => console.error(err));
     }
 
     getUser();
@@ -126,26 +79,27 @@ const Nav = () => {
   };
 
   return (
-    <div className={classes.root}>
       <AppBar position="static" color="primary">
         <Toolbar>
           <MainMenu />
           <NavTitle />
           <div>
-            <CreateMenu handleOpenCreate={handleOpenCreate} />
+            <div className={classes.rightMenus}>
+              <CreateMenu handleOpenCreate={handleOpenCreate} />
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleProfileMenu}
+                color="inherit"
+              >
+                <Avatar src={user.avatar} />
+              </IconButton>
+            </div>
             <CreatePost open={openCreatePost} handleCloseCreate={handleCloseCreate} />
             <CreateMeet open={openCreateMeet} handleCloseCreate={handleCloseCreate} />
             <CreateListing open={openCreateListing} handleCloseCreate={handleCloseCreate} />
 
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleProfileMenu}
-              color="inherit"
-            >
-              <Avatar src={user.avatar} />
-            </IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={profileAnchorEl}
@@ -179,7 +133,6 @@ const Nav = () => {
           </div>
         </Toolbar>
       </AppBar>
-    </div>
   );
 };
 
