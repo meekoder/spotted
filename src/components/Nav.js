@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import Link from '@material-ui/core/Link';
-import Divider from '@material-ui/core/Divider';
 import 'date-fns';
 import Context from './Context';
 import MainMenu from './nav/MainMenu';
@@ -17,6 +12,7 @@ import CreateMenu from './nav/CreateMenu';
 import CreatePost from './nav/CreatePost';
 import CreateMeet from './nav/CreateMeet';
 import CreateListing from './nav/CreateListing';
+import ProfileMenu from './nav/ProfileMenu';
 
 const useStyles = makeStyles((theme) => ({
   rightMenus: {
@@ -27,13 +23,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Nav = () => {
   const classes = useStyles();
-  const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const [openCreatePost, setOpenCreatePost] = useState(false);
   const [openCreateMeet, setOpenCreateMeet] = useState(false);
   const [openCreateListing, setOpenCreateListing] = useState(false);
+  const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const { user, setPosts, posts, setUser } = useContext(Context);
-  const profileOpen = Boolean(profileAnchorEl);
-  let history = useHistory(); 
 
   useEffect(() => {
     async function getUser() {
@@ -48,16 +42,6 @@ const Nav = () => {
 
   const handleProfileMenu = (event) => {
     setProfileAnchorEl(event.currentTarget);
-  };
-
-  const handleProfileClose = () => {
-    setProfileAnchorEl(null);
-  };
-
-  const handleLogout = () => {
-    fetch('/api/logout')
-      .then((res) => res.json())
-      .catch(() => history.push('/'));
   };
 
   const handleOpenCreate = (menu) => {
@@ -99,37 +83,7 @@ const Nav = () => {
             <CreatePost open={openCreatePost} handleCloseCreate={handleCloseCreate} />
             <CreateMeet open={openCreateMeet} handleCloseCreate={handleCloseCreate} />
             <CreateListing open={openCreateListing} handleCloseCreate={handleCloseCreate} />
-
-            <Menu
-              id="menu-appbar"
-              anchorEl={profileAnchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={profileOpen}
-              onClose={handleProfileClose}
-            >
-              <Link style={{ textDecoration: 'none'}} color="inherit" href="/profile">
-                <MenuItem onClick={handleProfileClose}>Profile</MenuItem>
-              </Link>
-              <Link style={{ textDecoration: 'none'}} color="inherit" href="/settings">
-                <MenuItem onClick={handleProfileClose}>Account Settings</MenuItem>
-              </Link>
-              <MenuItem onClick={handleProfileClose}>Spotted</MenuItem>
-              <Link style={{ textDecoration: 'none'}} color="inherit" href="/likes">
-                <MenuItem onClick={handleProfileClose}>Likes</MenuItem>
-              </Link>
-              <Divider />
-              <Link style={{ textDecoration: 'none'}} color="inherit">
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Link>
-            </Menu>
+            <ProfileMenu profileAnchorEl={profileAnchorEl} handleProfileMenu={handleProfileMenu} />
           </div>
         </Toolbar>
       </AppBar>
