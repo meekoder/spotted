@@ -18,6 +18,7 @@ As a car enthusiast myself, I found it difficult to find local car meets.
 - App includes interfaces for viewing profiles, photos of posted vehicles, locations of car meets, and listings of cars from the Marketplace
 - Photos are able to be commented on or liked
 - Users are able to post their own photos, car meet locations, or put a vehicle up for sale
+- Users are able to livestream to their followers using their webcam
 - In Account Settings, the user's information can be updated
 
 ## Tech/Frameworks Used ##
