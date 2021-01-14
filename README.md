@@ -3,9 +3,12 @@ This application was created to help connect car enthusiasts from around the wor
 As a car enthusiast myself, I found it difficult to find local car meets.
 
 ## Preview
+<img src="https://github.com/meekoder/spotted/raw/master/landing.png" height="450">
+<div align="center">
+  <img src="https://github.com/meekoder/spotted/blob/master/signup.png?raw=true" height="275">
+  <img src="https://github.com/meekoder/spotted/blob/master/login.png?raw=true" height="275">
+</div>
 ![](landing.png)
-![](signup.png)
-![](login.png)
 
 ## Features
 
