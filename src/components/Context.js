@@ -8,6 +8,7 @@ export const Provider = ({ children }) => {
   const [listings, setListings] = useState([]);
   const [selectedFile, setSelectedFile] = useState([]);
   const [likes, setLikes] = useState([]);
+  const [profileAnchorEl, setProfileAnchorEl] = useState(null);
   const [settings, setSettings] = useState({
     firstname: '',
     lastname: '',
@@ -63,6 +64,8 @@ export const Provider = ({ children }) => {
       meets,
       listings,
       likes,
+      profileAnchorEl,
+      setProfileAnchorEl,
       settings,
       setSettings,
     }}

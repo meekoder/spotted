@@ -12,6 +12,7 @@ import CreateMenu from './nav/CreateMenu';
 import CreatePost from './nav/CreatePost';
 import CreateMeet from './nav/CreateMeet';
 import CreateListing from './nav/CreateListing';
+import Stream from './nav/Stream';
 import ProfileMenu from './nav/ProfileMenu';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,8 +27,7 @@ const Nav = () => {
   const [openCreatePost, setOpenCreatePost] = useState(false);
   const [openCreateMeet, setOpenCreateMeet] = useState(false);
   const [openCreateListing, setOpenCreateListing] = useState(false);
-  const [profileAnchorEl, setProfileAnchorEl] = useState(null);
-  const { user, setPosts, posts, setUser } = useContext(Context);
+  const { user, setUser, setProfileAnchorEl, setPosts, posts } = useContext(Context);
 
   useEffect(() => {
     async function getUser() {
@@ -39,10 +39,6 @@ const Nav = () => {
 
     getUser();
   }, []);
-
-  const handleProfileMenu = (event) => {
-    setProfileAnchorEl(event.currentTarget);
-  };
 
   const handleOpenCreate = (menu) => {
     const obj = {
@@ -69,12 +65,13 @@ const Nav = () => {
           <NavTitle />
           <div>
             <div className={classes.rightMenus}>
+              <Stream />
               <CreateMenu handleOpenCreate={handleOpenCreate} />
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleProfileMenu}
+                onClick={(e) => setProfileAnchorEl(e.currentTarget)}
                 color="inherit"
               >
                 <Avatar src={user.avatar} />
@@ -83,7 +80,7 @@ const Nav = () => {
             <CreatePost open={openCreatePost} handleCloseCreate={handleCloseCreate} />
             <CreateMeet open={openCreateMeet} handleCloseCreate={handleCloseCreate} />
             <CreateListing open={openCreateListing} handleCloseCreate={handleCloseCreate} />
-            <ProfileMenu profileAnchorEl={profileAnchorEl} handleProfileMenu={handleProfileMenu} />
+            <ProfileMenu />
           </div>
         </Toolbar>
       </AppBar>

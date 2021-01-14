@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Context from '../Context';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 
-const ProfileMenu = ({ profileAnchorEl, handleProfileMenu }) => {
+const ProfileMenu = () => {
   let history = useHistory(); 
+  const { profileAnchorEl, setProfileAnchorEl } = useContext(Context);
   const profileOpen = Boolean(profileAnchorEl);
 
-
   const handleProfileClose = (e) => {
-    handleProfileMenu(e);
+    setProfileAnchorEl(null);
   };
 
   const handleLogout = () => {
