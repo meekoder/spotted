@@ -7,9 +7,9 @@ As a car enthusiast myself, I found it difficult to find local car meets.
   <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/landing.png?raw=true" height="450">
 </div>
 <div align="center">
-  <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/signup.png?raw=true" height="275">
-  <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/login.png?raw=true" height="275">
-  <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/2FA.png?raw=true" height="275">
+  <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/signup.png?raw=true" height="200">
+  <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/login.png?raw=true" height="200">
+  <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/2FA.png?raw=true" height="200">
 </div>
 <div align="center">
   <img src="https://github.com/meekoder/spotted/blob/master/readme_assets/home.png?raw=true" height="450">
