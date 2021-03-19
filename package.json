@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "amazon-ivs-player": "^1.2.0",
     "aws-sdk": "^2.820.0",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
@@ -33,6 +34,7 @@
     "react-scripts": "4.0.1",
     "react-swipeable-views": "^0.13.9",
     "twilio": "^3.54.1",
+    "video.js": "^7.6.6",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

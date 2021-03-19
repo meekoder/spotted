@@ -21,7 +21,6 @@ const MainMenu = () => {
       const handleClose = () => {
             setAnchorEl(null);
       };
-
       return (
             <div>
                   <IconButton 
@@ -49,7 +48,7 @@ const MainMenu = () => {
                         open={menuOpen}
                         onClose={handleClose}
                   >
-                        <Link style={{ textDecoration: 'none'}} color="inherit" href="/home">
+                        <Link style={{ textDecoration: 'none'}} color="inherit" href="/livestream">
                               <MenuItem onClick={handleClose}>Start Livestream</MenuItem>
                         </Link>
                   </Menu>

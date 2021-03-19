@@ -14,6 +14,7 @@ import Liked from '../likes/Liked';
 import Profile from '../profile/Profile';
 import Settings from '../settings/Settings';
 import Verify from './Verify';
+import Stream from '../livestream/Stream';
 
 const Landing = () => {
   return (
@@ -48,6 +49,9 @@ const Landing = () => {
         </Route>
         <Route path="/settings">
           <Settings />
+        </Route>
+        <Route path="/livestream">
+          <Stream />
         </Route>
       </Switch>
     </Router>
