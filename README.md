@@ -43,4 +43,5 @@ __Other technologies used__
 
 1. Clone the project locally
 2. Run ```npm start``` in the command line
-3. Navigate to [http://localhost:3000](http://localhost:3000) in your browser to view/use the application
+3. Navigate to the backend directory and run ```node server.js``` to start the server
+4. Navigate to [http://localhost:3000](http://localhost:3000) in your browser to view/use the application
